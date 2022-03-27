@@ -33,15 +33,15 @@ const doxLast = [
 ]
 var currentBrent = 1
 
-console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m GIBSON SYSTEMS: ...ONLINE")
-console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m GIBSON DATABASE: ...ONLINE")
-console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m GIBSON BOTS: ...ONLINE")
-console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m DOX CDN: ...ONLINE")
-console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m ROBLOX PLACE STEALER: ...ONLINE")
-console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m ROBLONIUM SERVERS: ...ONLINE")
-console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m LATEST DOX: "+doxFirst[Math.floor(Math.random() * doxFirst.length)]+" "+doxLast[Math.floor(Math.random() * doxLast.length)]+" @ http://dox.roblonium.com/all/archive.7z")
+console.log("   \x1b[34m[BOOT]\x1b[0m GIBSON SYSTEMS: ...ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m GIBSON DATABASE: ...ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m GIBSON BOTS: ...ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m DOX CDN: ...ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m ROBLOX PLACE STEALER: ...ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m ROBLONIUM SERVERS: ...ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m LATEST DOX: "+doxFirst[Math.floor(Math.random() * doxFirst.length)]+" "+doxLast[Math.floor(Math.random() * doxLast.length)]+" @ http://dox.roblonium.com/all/archive.7z")
 
-console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m INITIALIZING 'BRENTGIBSON' ACCOUNT FINDER (CODENAME GIBSON HUNTER)")
+console.log("   \x1b[34m[BOOT]\x1b[0m INITIALIZING 'BRENTGIBSON' ACCOUNT FINDER (CODENAME GIBSON HUNTER)")
 entry()
 
 async function entry(){
@@ -61,7 +61,7 @@ async function entry(){
     request(options)
         .then(async function(data){
             if(data.body.data[0] != undefined){
-                console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m GIBSON FOUND // USERNAME : "+data.body.data[0]["name"]+" // PASSWORD : "+data.body.data[0]["name"].split("").reverse().join(""))
+                console.log("   \x1b[32m[GIBSON]\x1b[0m GIBSON FOUND // USERNAME : "+data.body.data[0]["name"]+" // PASSWORD : "+data.body.data[0]["name"].split("").reverse().join(""))
             }
             currentBrent++
             return entry()

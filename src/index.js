@@ -31,17 +31,17 @@ const doxLast = [
     'K. Bheem',
     'LeBron'
 ]
-var currentBrent = 1
+var current = 1
 
-console.log("   \x1b[34m[BOOT]\x1b[0m GIBSON SYSTEMS: ...ONLINE")
-console.log("   \x1b[34m[BOOT]\x1b[0m GIBSON DATABASE: ...ONLINE")
-console.log("   \x1b[34m[BOOT]\x1b[0m GIBSON BOTS: ...ONLINE")
-console.log("   \x1b[34m[BOOT]\x1b[0m DOX CDN: ...ONLINE")
-console.log("   \x1b[34m[BOOT]\x1b[0m ROBLOX PLACE STEALER: ...ONLINE")
-console.log("   \x1b[34m[BOOT]\x1b[0m ROBLONIUM SERVERS: ...ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m ROBLONIUM WEBSITE: ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m GRAPHICTORIA WEBSITE: ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m ROBLOX FILE SCRAPERS: ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m SIMULPONG: ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m SIMULPING: ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m DOX SYSTEMS: ONLINE")
 console.log("   \x1b[34m[BOOT]\x1b[0m LATEST DOX: "+doxFirst[Math.floor(Math.random() * doxFirst.length)]+" "+doxLast[Math.floor(Math.random() * doxLast.length)]+" @ http://dox.roblonium.com/all/archive.7z")
 
-console.log("   \x1b[34m[BOOT]\x1b[0m INITIALIZING 'BRENTGIBSON' ACCOUNT FINDER (CODENAME GIBSON HUNTER)")
+console.log("   \x1b[34m[BOOT]\x1b[0m INITIALIZING ACCOUNT FINDER (CODENAME 7HU6_HUN73R)")
 entry()
 
 async function entry(){
@@ -55,15 +55,18 @@ async function entry(){
             return response;
             return cheerio.load(body);
         },
-        body: {"usernames":["BrentGibson"+currentBrent], "excludeBannedUsers":true},
+        body: {"usernames":["BrentGibson"+current,"KyleWagner"+current], "excludeBannedUsers":true},
         json: true
     };
     request(options)
         .then(async function(data){
             if(data.body.data[0] != undefined){
-                console.log("   \x1b[32m[GIBSON]\x1b[0m GIBSON FOUND // USERNAME : "+data.body.data[0]["name"]+" // PASSWORD : "+data.body.data[0]["name"].split("").reverse().join(""))
+                console.log("   \x1b[32m[GIBSON]\x1b[0m GIBSON FOUND // "+data.body.data[0]["name"]+":"+data.body.data[0]["name"].split("").reverse().join(""))
             }
-            currentBrent++
+            if(data.body.data[1] != undefined){
+                console.log("   \x1b[36m[KYLE]\x1b[0m KYLE FOUND // "+data.body.data[1]["name"]+":"+data.body.data[1]["name"].split("").reverse().join(""))
+            }
+            current++
             return entry()
         })
         .catch(async function(error){

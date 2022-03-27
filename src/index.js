@@ -33,11 +33,12 @@ const doxLast = [
 ]
 var current = 1
 
-console.log("   \x1b[34m[BOOT]\x1b[0m ROBLONIUM WEBSITE: ONLINE")
 console.log("   \x1b[34m[BOOT]\x1b[0m GRAPHICTORIA WEBSITE: ONLINE")
 console.log("   \x1b[34m[BOOT]\x1b[0m ROBLOX FILE SCRAPERS: ONLINE")
-console.log("   \x1b[34m[BOOT]\x1b[0m SIMULPONG: ONLINE")
-console.log("   \x1b[34m[BOOT]\x1b[0m SIMULPING: ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m SIMULPONG.COM: ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m SIMULPING.COM: ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m RBX.OKTA.COM: ONLINE")
+console.log("   \x1b[34m[BOOT]\x1b[0m ROBLOX.LOCAL: ONLINE")
 console.log("   \x1b[34m[BOOT]\x1b[0m DOX SYSTEMS: ONLINE")
 console.log("   \x1b[34m[BOOT]\x1b[0m LATEST DOX: "+doxFirst[Math.floor(Math.random() * doxFirst.length)]+" "+doxLast[Math.floor(Math.random() * doxLast.length)]+" @ http://dox.roblonium.com/all/archive.7z")
 
@@ -55,15 +56,12 @@ async function entry(){
             return response;
             return cheerio.load(body);
         },
-        body: {"usernames":["BrentGibson"+current,"KyleWagner"+current], "excludeBannedUsers":true},
+        body: {"usernames":["KyleWagner"+current], "excludeBannedUsers":true},
         json: true
     };
     request(options)
         .then(async function(data){
             if(data.body.data[0] != undefined){
-                console.log("   \x1b[32m[GIBSON]\x1b[0m GIBSON FOUND //    USERNAME: "+data.body.data[0]["name"]+" //   PASSWORD: "+data.body.data[0]["name"].split("").reverse().join(""))
-            }
-            if(data.body.data[1] != undefined){
                 console.log("   \x1b[36m[KYLE]\x1b[0m KYLE FOUND //        USERNAME: "+data.body.data[1]["name"]+" //   PASSWORD: "+data.body.data[1]["name"].split("").reverse().join(""))
             }
             current++

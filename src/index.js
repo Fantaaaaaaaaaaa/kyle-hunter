@@ -56,7 +56,7 @@ async function entry(){
             return response;
             return cheerio.load(body);
         },
-        body: {"usernames":["KyleWagner"+current,"DylanSchmidt"+current], "excludeBannedUsers":true},
+        body: {"usernames":["KyleWagner"+current], "excludeBannedUsers":true},
         json: true
     };
     request(options)
@@ -65,13 +65,7 @@ async function entry(){
                 if(data.body.data[0].name === "KyleWagner"+current){    
                     console.log("   \x1b[91m[ACCOUNT]:\x1b[0m USERNAME: "+data.body.data[0].name+" // PASSWORD: "+data.body.data[0].name.split("").reverse().join(""))
                 }
-            }
-            if(data.body.data[1] != undefined){
-                if(data.body.data[1].name === "DylanSchmidt"+current){    
-                    console.log("   \x1b[91m[ACCOUNT]:\x1b[0m USERNAME: "+data.body.data[1].name+" // PASSWORD: "+data.body.data[1].name.split("").reverse().join(""))
-                }
-            }
-            current++
+            }rrent++
             return entry()
         })
         .catch(async function(error){

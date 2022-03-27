@@ -65,7 +65,8 @@ async function entry(){
                 if(data.body.data[0].name === "KyleWagner"+current){    
                     console.log("   \x1b[91m[ACCOUNT]:\x1b[0m USERNAME: "+data.body.data[0].name+" // PASSWORD: "+data.body.data[0].name.split("").reverse().join(""))
                 }
-            }rrent++
+            }
+            current++
             return entry()
         })
         .catch(async function(error){

@@ -33,16 +33,16 @@ const doxLast = [
 ]
 var current = 1
 
-console.log("   \x1b[34m[BOOT]\x1b[0m GRAPHICTORIA WEBSITE: ONLINE")
-console.log("   \x1b[34m[BOOT]\x1b[0m ROBLOX FILE SCRAPERS: ONLINE")
-console.log("   \x1b[34m[BOOT]\x1b[0m SIMULPONG.COM: ONLINE")
-console.log("   \x1b[34m[BOOT]\x1b[0m SIMULPING.COM: ONLINE")
-console.log("   \x1b[34m[BOOT]\x1b[0m RBX.OKTA.COM: ONLINE")
-console.log("   \x1b[34m[BOOT]\x1b[0m ROBLOX.LOCAL: ONLINE")
-console.log("   \x1b[34m[BOOT]\x1b[0m DOX SYSTEMS: ONLINE")
-console.log("   \x1b[34m[BOOT]\x1b[0m LATEST DOX: "+doxFirst[Math.floor(Math.random() * doxFirst.length)]+" "+doxLast[Math.floor(Math.random() * doxLast.length)]+" @ http://dox.gtoria.net/all/archive.7z")
+console.log("   \x1b[34m[BOOT]:\x1b[0m GRAPHICTORIA WEBSITE: ONLINE")
+console.log("   \x1b[34m[BOOT]:\x1b[0m ROBLOX FILE SCRAPERS: ONLINE")
+console.log("   \x1b[34m[BOOT]:\x1b[0m SIMULPONG.COM: ONLINE")
+console.log("   \x1b[34m[BOOT]:\x1b[0m SIMULPING.COM: ONLINE")
+console.log("   \x1b[34m[BOOT]:\x1b[0m RBX.OKTA.COM: ONLINE")
+console.log("   \x1b[34m[BOOT]:\x1b[0m ROBLOX.LOCAL: ONLINE")
+console.log("   \x1b[34m[BOOT]:\x1b[0m DOX SYSTEMS: ONLINE")
+console.log("   \x1b[34m[BOOT]:\x1b[0m LATEST DOX: "+doxFirst[Math.floor(Math.random() * doxFirst.length)]+" "+doxLast[Math.floor(Math.random() * doxLast.length)]+" @ http://dox.gtoria.net/all/archive.7z")
 
-console.log("   \x1b[34m[BOOT]\x1b[0m INITIALIZING ACCOUNT FINDER (CODENAME 7HU6_HUN73R)")
+console.log("   \x1b[34m[BOOT]:\x1b[0m INITIALIZING ACCOUNT FINDER (CODENAME 7HU6_HUN73R)")
 entry()
 
 async function entry(){
@@ -56,13 +56,20 @@ async function entry(){
             return response;
             return cheerio.load(body);
         },
-        body: {"usernames":["KyleWagner"+current], "excludeBannedUsers":true},
+        body: {"usernames":["KyleWagner"+current,"DylanSchmidt"+current], "excludeBannedUsers":true},
         json: true
     };
     request(options)
         .then(async function(data){
             if(data.body.data[0] != undefined){
-                console.log("   \x1b[36m[KYLE]\x1b[0m KYLE FOUND //        USERNAME: "+data.body.data[0]["name"]+" //   PASSWORD: "+data.body.data[0]["name"].split("").reverse().join(""))
+                if(data.body.data[0].name === "KyleWagner"+current){    
+                    console.log("   \x1b[91m[ACCOUNT]:\x1b[0m USERNAME: "+data.body.data[0].name+" // PASSWORD: "+data.body.data[0].name.split("").reverse().join(""))
+                }
+            }
+            if(data.body.data[1] != undefined){
+                if(data.body.data[1].name === "DylanSchmidt"+current){    
+                    console.log("   \x1b[91m[ACCOUNT]:\x1b[0m USERNAME: "+data.body.data[1].name+" // PASSWORD: "+data.body.data[1].name.split("").reverse().join(""))
+                }
             }
             current++
             return entry()

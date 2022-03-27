@@ -5,6 +5,7 @@ const readline = require('readline-promise').default.createInterface({ input: pr
 const fs = require('fs');
 const { mainModule } = require('process');
 const { default: readlinePromise } = require('readline-promise');
+const { strictEqual } = require('assert');
 const doxFirst = [
     'Raqeem',
     'Andrew',
@@ -28,18 +29,43 @@ const doxLast = [
     'K. Bheem',
     'LeBron'
 ]
-const d = new Date();
+var currentBrent = 1
 
-console.log("   ["+d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()+"@"+d.getHours()+":"+d.getMinutes()+"]    GIBSON SYSTEMS: ...ONLINE")
-console.log("   ["+d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()+"@"+d.getHours()+":"+d.getMinutes()+"]    GIBSON DATABASE: ...ONLINE")
-console.log("   ["+d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()+"@"+d.getHours()+":"+d.getMinutes()+"]    GIBSON BOTS: ...ONLINE")
-console.log("   ["+d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()+"@"+d.getHours()+":"+d.getMinutes()+"]    DOX CDN: ...ONLINE")
-console.log("   ["+d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()+"@"+d.getHours()+":"+d.getMinutes()+"]    ROBLOX PLACE STEALER: ...ONLINE")
-console.log("   ["+d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()+"@"+d.getHours()+":"+d.getMinutes()+"]    ROBLONIUM SERVERS: ...ONLINE")
-console.log("   ["+d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()+"@"+d.getHours()+":"+d.getMinutes()+"]    LATEST DOX: "+doxFirst[Math.floor(Math.random() * doxFirst.length)]+" "+doxLast[Math.floor(Math.random() * doxLast.length)]+" @ http://dox.roblonium.com/all/archive.7z")
+console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m GIBSON SYSTEMS: ...ONLINE")
+console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m GIBSON DATABASE: ...ONLINE")
+console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m GIBSON BOTS: ...ONLINE")
+console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m DOX CDN: ...ONLINE")
+console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m ROBLOX PLACE STEALER: ...ONLINE")
+console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m ROBLONIUM SERVERS: ...ONLINE")
+console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m LATEST DOX: "+doxFirst[Math.floor(Math.random() * doxFirst.length)]+" "+doxLast[Math.floor(Math.random() * doxLast.length)]+" @ http://dox.roblonium.com/all/archive.7z")
 
+console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m INITIALIZING 'BRENTGIBSON' ACCOUNT FINDER (CODENAME GIBSON HUNTER)")
 entry()
 
 async function entry(){
-
+    var options = {
+        url: "https://users.roblox.com/v1/usernames/users",
+        method: "POST",
+        transform: function (body, response) {
+            if (response.headers['content-type'] === 'application/json') {
+                response.body = JSON.parse(body);
+            }
+            return response;
+            return cheerio.load(body);
+        },
+        body: {"usernames":["BrentGibson"+currentBrent], "excludeBannedUsers":true},
+        json: true
+    };
+    request(options)
+        .then(async function(data){
+            if(data.body.data[0] != undefined){
+                console.log("   \x1b[32m[GIBSON_HUNTER]\x1b[0m GIBSON FOUND // USERNAME : "+data.body.data[0]["name"]+" // PASSWORD : "+data.body.data[0]["name"].split("").reverse().join(""))
+            }
+            currentBrent++
+            return entry()
+        })
+        .catch(async function(error){
+            console.log(error)
+            return entry()
+        });
 }

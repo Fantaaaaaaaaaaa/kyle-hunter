@@ -40,7 +40,7 @@ console.log("   \x1b[34m[BOOT]\x1b[0m SIMULPING.COM: ONLINE")
 console.log("   \x1b[34m[BOOT]\x1b[0m RBX.OKTA.COM: ONLINE")
 console.log("   \x1b[34m[BOOT]\x1b[0m ROBLOX.LOCAL: ONLINE")
 console.log("   \x1b[34m[BOOT]\x1b[0m DOX SYSTEMS: ONLINE")
-console.log("   \x1b[34m[BOOT]\x1b[0m LATEST DOX: "+doxFirst[Math.floor(Math.random() * doxFirst.length)]+" "+doxLast[Math.floor(Math.random() * doxLast.length)]+" @ http://dox.roblonium.com/all/archive.7z")
+console.log("   \x1b[34m[BOOT]\x1b[0m LATEST DOX: "+doxFirst[Math.floor(Math.random() * doxFirst.length)]+" "+doxLast[Math.floor(Math.random() * doxLast.length)]+" @ http://dox.gtoria.net/all/archive.7z")
 
 console.log("   \x1b[34m[BOOT]\x1b[0m INITIALIZING ACCOUNT FINDER (CODENAME 7HU6_HUN73R)")
 entry()

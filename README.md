@@ -1,4 +1,4 @@
-# gibson-hunter
+# kyle-hunter
 ## to build:
 ```sh
 $ npm i

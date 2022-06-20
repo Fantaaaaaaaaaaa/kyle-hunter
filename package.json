@@ -1,17 +1,18 @@
 {
-  "name": "gibsonbot9000",
-  "version": "1.0.0",
-  "description": "",
-  "main": "./src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "unexp",
-  "license": "MIT",
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.10",
-    "node-fetch": "^2.6.7",
-    "readline-promise": "^1.0.5",
-    "request-promise": "^4.2.6"
-  }
+    "name": "robloxbotfinder",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./src/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "unexp",
+    "license": "MIT",
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.10",
+        "grunt": "^1.5.3",
+        "node-fetch": "^2.6.7",
+        "readline-promise": "^1.0.5",
+        "request-promise": "^4.2.6"
+    }
 }

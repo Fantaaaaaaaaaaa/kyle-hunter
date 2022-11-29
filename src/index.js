@@ -29,6 +29,7 @@ const doxLast = [
     'McDonald',
     'Bich',
     'K. Bheem',
+    'Tate',
     'LeBron'
 ]
 var current = 1
